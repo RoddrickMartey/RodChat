@@ -10,13 +10,7 @@ import { store, persistor } from "./app/store";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <PersistGate
-        loading={null}
-        persistor={persistor}
-        onBeforeLift={() => {
-          console.log("Hydrated state:", store.getState());
-        }}
-      >
+      <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
           <App />
         </BrowserRouter>

@@ -118,3 +118,25 @@
     @apply bg-background text-foreground;
   }
 }
+
+.scrollbar-pink::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-pink::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-pink::-webkit-scrollbar-thumb {
+  background-color: #ec4899; /* Tailwind's pink-500 */
+  border-radius: 0;
+}
+
+.scrollbar-blue::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-blue::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-blue::-webkit-scrollbar-thumb {
+  background-color: #3b82f6; /* Tailwind's blue-500 */
+  border-radius: 0;
+}

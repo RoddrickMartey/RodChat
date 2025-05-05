@@ -48,7 +48,7 @@ export function Login() {
     try {
       const res = await axiosInstance.post("/auth/login", finalPayload);
       dispatch(loginSuccess(res.data));
-      toast.success("Login Complete", { position: "top-left" });
+      toast.success("Login Complete", { position: "top-right" });
       navigate("/");
 
       // Send to your backend here

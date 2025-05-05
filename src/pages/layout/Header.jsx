@@ -1,21 +1,17 @@
 import React from "react";
-import Logout from "../components/Logout";
-import { useSelector } from "react-redux";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import Chat from "../components/Chat";
+import People from "../components/People";
+import UserAvatar from "../components/UserAvatar";
 
 function Header() {
-  const { user } = useSelector((state) => state.user);
-  console.log(user);
-
   return (
-    <section className="flex flex-col h-screen items-center w-[60px] justify-between bg-blue-300">
-      <div>Rod</div>
-      <div className="flex flex-col space-y-3 mb-4">
-        <Avatar>
-          <AvatarImage src={user.avatar} />
-          <AvatarFallback>PIC</AvatarFallback>
-        </Avatar>
-        <Logout />
+    <section className="flex flex-col h-full items-center  justify-between py-3 bg-blue-600 ">
+      <div className="w-full mt-12 flex flex-col items-center justify-evenly">
+        <Chat />
+        <People />
+      </div>
+      <div className="w-[60px] h-[60px] flex items-center justify-center">
+        <UserAvatar />
       </div>
     </section>
   );

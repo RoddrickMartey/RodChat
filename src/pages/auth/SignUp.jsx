@@ -106,7 +106,7 @@ export function SignUp() {
 
       dispatch(loginSuccess(response.data));
       setProcessing(100);
-      toast.success("Sign Up Complete", { position: "top-left" });
+      toast.success("Sign Up Complete", { position: "top-right" });
       navigate("/");
 
       // Send to your backend here

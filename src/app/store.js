@@ -1,5 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import userReducer from "../features/userSlice";
+import wallpaperReducer from "../features/wallpaperSlice";
+import viewReducer from "../features/navView";
 import {
   persistStore,
   persistReducer,
@@ -12,18 +14,24 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+// Combine your reducers first
+const rootReducer = combineReducers({
+  user: userReducer,
+  wallpaper: wallpaperReducer,
+  view: viewReducer,
+});
+
+// Create a persist config for the combined reducer
 const persistConfig = {
-  key: "root", // Key for the persisted state
-  storage, // Default storage (localStorage in the browser)
-  whitelist: ["user"], // Specify which part of the state you want to persist
+  key: "root",
+  storage,
+  whitelist: ["user", "wallpaper", "view"],
 };
 
-const persistedUserReducer = persistReducer(persistConfig, userReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: {
-    user: persistedUserReducer, // Apply the persisted user reducer
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
